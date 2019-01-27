@@ -1,0 +1,65 @@
+<h1>Burgers!</h1>
+
+<h2>Burgers that are devoired!</h2>
+
+<ul>
+  {{#each burgers}}
+  {{#unless devoired}}
+  <h1>{{burger_name}}</h1>
+  {{/unless}}
+  {{/each}}
+</ul>
+<h2>Burgers that are not devoired!</h2>
+<ul>
+  {{#each burgers}}
+  {{#if devoired}}
+  <h1>{{burger_name}}</h1>
+  {{/if}}
+  {{/each}}
+</ul>
+
+
+<h2>Add a burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="bu">Burger Name:</label>
+    <input type="text" id="bu" name="name">
+  </div>
+
+  <div class="form-group">
+    {{!-- <label for="devoured">Devoured?</label><br> --}}
+    {{!-- <input type="radio" name="sleepy" value="1" checked> Devoired!<br> --}}
+
+  </div>
+
+  <button type="submit">Add Burger</button>
+  <script>
+
+  $("#add-btn").on("click", function(event) {
+  event.preventDefault();
+
+  // make a newCharacter obj
+  var burger = {
+    // name from name input
+    name: $("#bu").val().trim(),
+  };
+
+  // send an AJAX POST-request with jQuery
+  $.post("/api/burgers", newBurger)
+    // on success, run this callback
+    .then(function(data) {
+      // log the data we found
+      console.log(newBurger);
+      // tell the user we're adding a character with an alert window
+      alert("Adding burger...");
+    });
+
+  // empty each input box by replacing the value with an empty string
+  $("#bu").val("");
+  
+
+});
+
+  </script>
+</form>
