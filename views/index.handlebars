@@ -1,39 +1,59 @@
-<h1>Burgers!</h1>
+<div class="jumbotron jumbotron-fluid" id="jumbo">
+  <div class="container">
 
-<h2>Burgers that are not devoured!</h2>
-
-<ul>
-  {{#each burgers}}
-  {{#unless devoured}}
-  <l1>{{burger_name}}
-    <form class="devour-form" data="{{id}}">
-      <input type="hidden" name="devoured" value="true">
-      <button type="submit">Devoured!</button>
-    </form>
-  </l1>
-  {{/unless}}
-  {{/each}}
-
-</ul>
-<h2>Burgers that are devoured!</h2>
-<ul>
-  {{#each burgers}}
-  {{#if devoured}}  
-  <h1>{{burger_name}}</h1>
-  {{/if}}
-  {{/each}}
-</ul>
-
-
-<h2>Add a burger</h2>
-<form class="create-form">
-  <div class="form-group">
-    <label for="bu">Burger Name:</label>
-    <input type="text" id="bu" name="name">
+    <h1>Burgers!</h1>
+    <h2>Don't devour ALL the burgers!</h2>
   </div>
-  <button type="submit">Add Burger</button>
-</form>
+</div>
 
+
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-4">
+    <h2>Burgers that are not devoured!</h2>
+    <ul>
+      {{#each burgers}}
+      {{#unless devoured}}
+      <l1>
+        <h1>{{burger_name}}</h1>
+        <form class="devour-form" data="{{id}}">
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Devoured!</button>
+        </form>
+      </l1>
+      {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-4">
+    <h2>Burgers that are devoured!</h2>
+    <ul>
+      {{#each burgers}}
+      {{#if devoured}}
+      <h1>{{burger_name}}</h1>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <h2>Add a burger</h2>
+    <form class="create-form">
+      <div class="form-group">
+        <label for="bu">Burger Name:</label>
+        <input type="text" id="bu" name="name">
+        <button type="submit">Add Burger</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <script>
   $(".create-form").on("submit", function (event) {
